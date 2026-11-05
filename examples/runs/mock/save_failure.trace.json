@@ -1,0 +1,97 @@
+{
+  "mode": "mock",
+  "model": "offline-mock",
+  "max_steps_per_material": 8,
+  "injected_failure": "save_draft",
+  "items": [
+    {
+      "request": {
+        "material_id": "M04",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "incomplete",
+      "reason": "tool_failure",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "离线脚本从读取素材开始。",
+          "arguments": {
+            "material_id": "M04"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "片尾模板介绍",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已读取素材，检查审核规则。",
+          "arguments": {
+            "metadata": {
+              "title": "片尾模板介绍",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "observation": {
+            "state": "pass",
+            "missing_fields": [],
+            "risks": []
+          },
+          "next_action": "check_slot"
+        },
+        {
+          "step": 3,
+          "action": "check_slot",
+          "reason": "审核通过，查询用户授权的时段。",
+          "arguments": {
+            "material_id": "M04",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "available"
+          },
+          "next_action": "save_draft"
+        },
+        {
+          "step": 4,
+          "action": "save_draft",
+          "reason": "用户授权的时段可用，保存草稿。",
+          "arguments": {
+            "material_id": "M04",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "tool_error",
+            "code": "injected_failure"
+          },
+          "next_action": "finish_incomplete"
+        },
+        {
+          "step": 5,
+          "action": "finish_incomplete",
+          "reason": "本次工具结果无法继续。",
+          "arguments": {
+            "outcome": "incomplete"
+          },
+          "observation": {
+            "state": "incomplete",
+            "code": "tool_failure"
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

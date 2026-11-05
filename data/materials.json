@@ -1,0 +1,14 @@
+{
+  "materials": {
+    "M01": {"title": "字幕编辑技巧", "channel": "short_video", "owner": "内容组", "license_confirmed": true},
+    "M02": {"title": "转场教程", "channel": "short_video", "license_confirmed": true},
+    "M03": {"title": "带配乐的剪辑示例", "channel": "short_video", "owner": "内容组", "license_confirmed": false},
+    "M04": {"title": "片尾模板介绍", "channel": "short_video", "owner": "内容组", "license_confirmed": true}
+  },
+  "rules": {
+    "required_fields": ["title", "channel", "owner", "license_confirmed"],
+    "blocked_if": [
+      {"id": "R01", "field": "license_confirmed", "value": false, "reason": "素材授权未通过审核。"}
+    ]
+  }
+}

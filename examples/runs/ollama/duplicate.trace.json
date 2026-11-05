@@ -1,0 +1,98 @@
+{
+  "mode": "ollama",
+  "model": "qwen2.5:latest",
+  "max_steps_per_material": 8,
+  "injected_failure": null,
+  "items": [
+    {
+      "request": {
+        "material_id": "M01",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "done",
+      "reason": "reused",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "需要读取素材元数据以进行后续操作",
+          "arguments": {
+            "material_id": "M01"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已找到元数据，检查规则",
+          "arguments": {
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "observation": {
+            "state": "pass",
+            "missing_fields": [],
+            "risks": []
+          },
+          "next_action": "check_slot"
+        },
+        {
+          "step": 3,
+          "action": "check_slot",
+          "reason": "已通过规则检查，需验证用户要求的时段是否可用",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "available",
+            "existing_draft_id": "507732951e0d4828a7e2fb449d29c8e3"
+          },
+          "next_action": "save_draft"
+        },
+        {
+          "step": 4,
+          "action": "save_draft",
+          "reason": "check_slot 返回 available，且有 existing_draft_id，可以保存草稿",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "reused",
+            "draft_id": "507732951e0d4828a7e2fb449d29c8e3"
+          },
+          "next_action": "finish_done"
+        },
+        {
+          "step": 5,
+          "action": "finish_done",
+          "reason": "save_draft 返回 reused",
+          "arguments": {
+            "outcome": "done"
+          },
+          "observation": {
+            "state": "done",
+            "code": "reused"
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

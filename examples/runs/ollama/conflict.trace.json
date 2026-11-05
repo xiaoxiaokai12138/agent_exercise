@@ -1,0 +1,100 @@
+{
+  "mode": "ollama",
+  "model": "qwen2.5:latest",
+  "max_steps_per_material": 8,
+  "injected_failure": null,
+  "items": [
+    {
+      "request": {
+        "material_id": "M01",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "needs_confirmation",
+      "reason": "alternative_requires_confirmation",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "需要读取素材元数据以进行后续操作",
+          "arguments": {
+            "material_id": "M01"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已找到元数据，检查规则",
+          "arguments": {
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "observation": {
+            "state": "pass",
+            "missing_fields": [],
+            "risks": []
+          },
+          "next_action": "check_slot"
+        },
+        {
+          "step": 3,
+          "action": "check_slot",
+          "reason": "已通过规则检查，需验证用户要求的时段是否可用",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "conflict",
+            "source": "existing_schedule"
+          },
+          "next_action": "find_alternatives"
+        },
+        {
+          "step": 4,
+          "action": "find_alternatives",
+          "reason": "check_slot 返回 conflict，需查询可用时段",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "after_slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "found",
+            "slots": [
+              "2026-11-09T19:00"
+            ]
+          },
+          "next_action": "finish_needs_confirmation"
+        },
+        {
+          "step": 5,
+          "action": "finish_needs_confirmation",
+          "reason": "找到冲突时段，提供备选时间供确认",
+          "arguments": {
+            "outcome": "needs_confirmation"
+          },
+          "observation": {
+            "state": "needs_confirmation",
+            "code": "alternative_requires_confirmation"
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

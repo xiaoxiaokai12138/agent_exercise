@@ -1,0 +1,129 @@
+{
+  "normal": {
+    "status": [
+      "done"
+    ],
+    "draft_state": [
+      "saved"
+    ],
+    "draft_rows": 1,
+    "actions": [
+      [
+        "read_material",
+        "check_rules",
+        "check_slot",
+        "save_draft",
+        "finish_done"
+      ]
+    ]
+  },
+  "duplicate": {
+    "status": [
+      "done"
+    ],
+    "draft_state": [
+      "reused"
+    ],
+    "draft_rows": 1,
+    "actions": [
+      [
+        "read_material",
+        "check_rules",
+        "check_slot",
+        "save_draft",
+        "finish_done"
+      ]
+    ]
+  },
+  "conflict": {
+    "status": [
+      "needs_confirmation"
+    ],
+    "draft_state": [
+      "not_attempted"
+    ],
+    "draft_rows": 0,
+    "actions": [
+      [
+        "read_material",
+        "check_rules",
+        "check_slot",
+        "find_alternatives",
+        "finish_needs_confirmation"
+      ]
+    ]
+  },
+  "confirmed": {
+    "status": [
+      "done"
+    ],
+    "draft_state": [
+      "saved"
+    ],
+    "draft_rows": 1,
+    "actions": [
+      [
+        "read_material",
+        "check_rules",
+        "check_slot",
+        "save_draft",
+        "finish_done"
+      ]
+    ]
+  },
+  "review": {
+    "status": [
+      "needs_info",
+      "blocked"
+    ],
+    "draft_state": [
+      "not_attempted",
+      "not_attempted"
+    ],
+    "draft_rows": 0,
+    "actions": [
+      [
+        "read_material",
+        "check_rules",
+        "finish_needs_info"
+      ],
+      [
+        "read_material",
+        "check_rules",
+        "finish_blocked"
+      ]
+    ]
+  },
+  "save_failure": {
+    "status": [
+      "incomplete"
+    ],
+    "draft_state": [
+      "failed"
+    ],
+    "draft_rows": 0,
+    "actions": [
+      [
+        "read_material",
+        "check_rules",
+        "check_slot",
+        "save_draft",
+        "finish_incomplete"
+      ]
+    ]
+  },
+  "step_limit": {
+    "status": [
+      "incomplete"
+    ],
+    "draft_state": [
+      "not_attempted"
+    ],
+    "draft_rows": 0,
+    "actions": [
+      [
+        "read_material"
+      ]
+    ]
+  }
+}

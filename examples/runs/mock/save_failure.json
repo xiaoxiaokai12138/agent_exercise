@@ -1,0 +1,23 @@
+{
+  "status": "incomplete",
+  "items": [
+    {
+      "material_id": "M04",
+      "requested_at": "2026-11-09T18:00",
+      "status": "incomplete",
+      "reason": "tool_failure",
+      "audit_status": "pass",
+      "risks": [],
+      "missing_information": [],
+      "conflict": null,
+      "suggested_slots": [
+        "2026-11-09T18:00"
+      ],
+      "pending_confirmation": null,
+      "draft": {
+        "state": "failed",
+        "code": "injected_failure"
+      }
+    }
+  ]
+}

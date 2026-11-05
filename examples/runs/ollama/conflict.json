@@ -1,0 +1,30 @@
+{
+  "status": "incomplete",
+  "items": [
+    {
+      "material_id": "M01",
+      "requested_at": "2026-11-09T18:00",
+      "status": "needs_confirmation",
+      "reason": "alternative_requires_confirmation",
+      "audit_status": "pass",
+      "risks": [],
+      "missing_information": [],
+      "conflict": {
+        "state": "conflict",
+        "source": "existing_schedule"
+      },
+      "suggested_slots": [
+        "2026-11-09T19:00"
+      ],
+      "pending_confirmation": {
+        "slots": [
+          "2026-11-09T19:00"
+        ],
+        "reason": "requested_slot_conflict"
+      },
+      "draft": {
+        "state": "not_attempted"
+      }
+    }
+  ]
+}

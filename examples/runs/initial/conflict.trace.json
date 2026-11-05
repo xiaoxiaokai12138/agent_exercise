@@ -1,0 +1,97 @@
+{
+  "mode": "ollama",
+  "model": "qwen2.5:latest",
+  "max_steps_per_material": 8,
+  "injected_failure": null,
+  "items": [
+    {
+      "request": {
+        "material_id": "M01",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "incomplete",
+      "reason": "model_error",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "需要先读取素材元数据",
+          "arguments": {
+            "material_id": "M01"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已找到素材元数据，接下来检查规则。",
+          "arguments": {
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "observation": {
+            "state": "pass",
+            "missing_fields": [],
+            "risks": []
+          },
+          "next_action": "check_slot"
+        },
+        {
+          "step": 3,
+          "action": "check_slot",
+          "reason": "已通过规则检查，下一步是确认用户要求的时段是否可用。",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "conflict",
+            "source": "existing_schedule"
+          },
+          "next_action": "find_alternatives"
+        },
+        {
+          "step": 4,
+          "action": "find_alternatives",
+          "reason": "需要查询可用的更晚时段以解决冲突",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "after_slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "found",
+            "slots": [
+              "2026-11-09T19:00"
+            ]
+          },
+          "next_action": "model_error"
+        },
+        {
+          "step": 5,
+          "action": "model_error",
+          "arguments": {},
+          "observation": {
+            "state": "model_error",
+            "code": "ValueError"
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

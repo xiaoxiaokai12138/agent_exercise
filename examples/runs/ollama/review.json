@@ -1,0 +1,42 @@
+{
+  "status": "incomplete",
+  "items": [
+    {
+      "material_id": "M02",
+      "requested_at": "2026-11-09T18:00",
+      "status": "needs_info",
+      "reason": "missing_information",
+      "audit_status": "missing_information",
+      "risks": [],
+      "missing_information": [
+        "owner"
+      ],
+      "conflict": null,
+      "suggested_slots": [],
+      "pending_confirmation": null,
+      "draft": {
+        "state": "not_attempted"
+      }
+    },
+    {
+      "material_id": "M03",
+      "requested_at": "2026-11-09T18:00",
+      "status": "blocked",
+      "reason": "rule_risk",
+      "audit_status": "risk",
+      "risks": [
+        {
+          "id": "R01",
+          "reason": "素材授权未通过审核。"
+        }
+      ],
+      "missing_information": [],
+      "conflict": null,
+      "suggested_slots": [],
+      "pending_confirmation": null,
+      "draft": {
+        "state": "not_attempted"
+      }
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "mode": "mock",
+  "model": "offline-mock",
+  "max_steps_per_material": 8,
+  "injected_failure": null,
+  "items": [
+    {
+      "request": {
+        "material_id": "M02",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "needs_info",
+      "reason": "missing_information",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "离线脚本从读取素材开始。",
+          "arguments": {
+            "material_id": "M02"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "转场教程",
+              "channel": "short_video",
+              "license_confirmed": true
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已读取素材，检查审核规则。",
+          "arguments": {
+            "metadata": {
+              "title": "转场教程",
+              "channel": "short_video",
+              "license_confirmed": true
+            }
+          },
+          "observation": {
+            "state": "missing_information",
+            "missing_fields": [
+              "owner"
+            ],
+            "risks": []
+          },
+          "next_action": "finish_needs_info"
+        },
+        {
+          "step": 3,
+          "action": "finish_needs_info",
+          "reason": "需要补充规则要求的字段。",
+          "arguments": {
+            "outcome": "needs_info"
+          },
+          "observation": {
+            "state": "needs_info",
+            "code": "missing_information"
+          },
+          "next_action": null
+        }
+      ]
+    },
+    {
+      "request": {
+        "material_id": "M03",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "blocked",
+      "reason": "rule_risk",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "离线脚本从读取素材开始。",
+          "arguments": {
+            "material_id": "M03"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "带配乐的剪辑示例",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": false
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已读取素材，检查审核规则。",
+          "arguments": {
+            "metadata": {
+              "title": "带配乐的剪辑示例",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": false
+            }
+          },
+          "observation": {
+            "state": "risk",
+            "missing_fields": [],
+            "risks": [
+              {
+                "id": "R01",
+                "reason": "素材授权未通过审核。"
+              }
+            ]
+          },
+          "next_action": "finish_blocked"
+        },
+        {
+          "step": 3,
+          "action": "finish_blocked",
+          "reason": "命中阻断规则。",
+          "arguments": {
+            "outcome": "blocked"
+          },
+          "observation": {
+            "state": "blocked",
+            "code": "rule_risk"
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

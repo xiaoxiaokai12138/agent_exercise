@@ -1,0 +1,97 @@
+{
+  "mode": "mock",
+  "model": "offline-mock",
+  "max_steps_per_material": 8,
+  "injected_failure": null,
+  "items": [
+    {
+      "request": {
+        "material_id": "M01",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "done",
+      "reason": "saved",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "离线脚本从读取素材开始。",
+          "arguments": {
+            "material_id": "M01"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "next_action": "check_rules"
+        },
+        {
+          "step": 2,
+          "action": "check_rules",
+          "reason": "已读取素材，检查审核规则。",
+          "arguments": {
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "observation": {
+            "state": "pass",
+            "missing_fields": [],
+            "risks": []
+          },
+          "next_action": "check_slot"
+        },
+        {
+          "step": 3,
+          "action": "check_slot",
+          "reason": "审核通过，查询用户授权的时段。",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "available"
+          },
+          "next_action": "save_draft"
+        },
+        {
+          "step": 4,
+          "action": "save_draft",
+          "reason": "用户授权的时段可用，保存草稿。",
+          "arguments": {
+            "material_id": "M01",
+            "channel": "short_video",
+            "slot": "2026-11-09T18:00"
+          },
+          "observation": {
+            "state": "saved",
+            "draft_id": "8154c631ab514bb8a97760bf80510949"
+          },
+          "next_action": "finish_done"
+        },
+        {
+          "step": 5,
+          "action": "finish_done",
+          "reason": "保存工具返回草稿 ID。",
+          "arguments": {
+            "outcome": "done"
+          },
+          "observation": {
+            "state": "done",
+            "code": "saved"
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

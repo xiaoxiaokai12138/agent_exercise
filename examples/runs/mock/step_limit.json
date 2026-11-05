@@ -1,0 +1,20 @@
+{
+  "status": "incomplete",
+  "items": [
+    {
+      "material_id": "M01",
+      "requested_at": "2026-11-09T18:00",
+      "status": "incomplete",
+      "reason": "step_limit",
+      "audit_status": "not_reviewed",
+      "risks": [],
+      "missing_information": [],
+      "conflict": null,
+      "suggested_slots": [],
+      "pending_confirmation": null,
+      "draft": {
+        "state": "not_attempted"
+      }
+    }
+  ]
+}

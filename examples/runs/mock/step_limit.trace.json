@@ -1,0 +1,36 @@
+{
+  "mode": "mock",
+  "model": "offline-mock",
+  "max_steps_per_material": 1,
+  "injected_failure": null,
+  "items": [
+    {
+      "request": {
+        "material_id": "M01",
+        "requested_at": "2026-11-09T18:00"
+      },
+      "status": "incomplete",
+      "reason": "step_limit",
+      "steps": [
+        {
+          "step": 1,
+          "action": "read_material",
+          "reason": "离线脚本从读取素材开始。",
+          "arguments": {
+            "material_id": "M01"
+          },
+          "observation": {
+            "state": "found",
+            "metadata": {
+              "title": "字幕编辑技巧",
+              "channel": "short_video",
+              "owner": "内容组",
+              "license_confirmed": true
+            }
+          },
+          "next_action": null
+        }
+      ]
+    }
+  ]
+}

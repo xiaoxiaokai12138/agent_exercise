@@ -1,0 +1,23 @@
+{
+  "status": "complete",
+  "items": [
+    {
+      "material_id": "M01",
+      "requested_at": "2026-11-09T19:00",
+      "status": "done",
+      "reason": "saved",
+      "audit_status": "pass",
+      "risks": [],
+      "missing_information": [],
+      "conflict": null,
+      "suggested_slots": [
+        "2026-11-09T19:00"
+      ],
+      "pending_confirmation": null,
+      "draft": {
+        "state": "saved",
+        "draft_id": "9b9386434f134d57b977c6b106317fa3"
+      }
+    }
+  ]
+}
