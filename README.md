@@ -1,4 +1,4 @@
-# 素材审核与发布排期 Agent
+# agent_exercise · 素材审核与发布排期 Agent
 
 小影校招 AI Agent 开发考核 · 第 1 题
 
@@ -47,5 +47,7 @@ python -X utf8 examples/reproduce.py --mode mock
 | `draft.state` | 草稿写入状态，包括已保存、已复用、未尝试、冲突或失败 |
 
 ## GitHub 提交
+
+项目仓库为 [xiaoxiaokai12138/agent_exercise](https://github.com/xiaoxiaokai12138/agent_exercise)。
 
 提交信息包括第 1 题、项目 GitHub URL 和已推送的最终 commit SHA。私有仓库需核对指定评审账号的读取权限。个人贡献、实测结果与耗时记录在 [AI 使用与贡献记录](docs/04-ai-usage.md)。
